@@ -7,21 +7,24 @@ import { MilkService, PostData } from '../milk.service';
   styleUrls: ['./showreport.component.css'],
 })
 export class ShowreportComponent implements OnInit {
-  data = [];
+  totalQuantity: number = 0;
+  dayCount: number = 0;
+  dataTable = [];
 
   constructor(private milkService: MilkService) {}
 
   ngOnInit(): void {
     this.milkService.getAllMilkAccountData().subscribe((resData) => {
-      this.data = resData;
+      this.processData(resData);
     });
-    this.processData();
   }
-  processData(): void {
-    let qtyArray = [];
-    let dayCount = 0;
-    for (let row of this.data) {
-      console.log(row.title);
+  processData(data: any[]): void {
+    for (let row of data) {
+      this.totalQuantity += row.quantity;
+      this.dayCount++;
     }
+    console.log(
+      'Quantity: ' + this.totalQuantity + ' Total Days :' + this.dayCount
+    );
   }
 }

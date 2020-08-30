@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ListdataComponent } from './listdata/listdata.component';
 import { ShowreportComponent } from './showreport/showreport.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ShowreportComponent } from './showreport/showreport.component';
     AddmilkComponent,
     ListdataComponent,
     ShowreportComponent,
+    AdminComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

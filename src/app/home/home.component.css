@@ -15,6 +15,14 @@
 
 .flex-container > div:nth-child(4) {
   height: auto;
+  width: 400;
+  margin: 20px;
+  border: 1px solid gainsboro;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.flex-container > div:nth-child(2) {
+  height: 200px;
   width: auto;
   margin: 20px;
   border: 1px solid gainsboro;
