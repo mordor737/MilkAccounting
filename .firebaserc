@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "milkaccounting": {
+      "hosting": {
+        "MilkManagement": [
+          "milkaccounting"
+        ]
+      }
+    }
+  }
+}

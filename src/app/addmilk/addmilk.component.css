@@ -1,0 +1,34 @@
+.contain-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quantity-container {
+  cursor: grab;
+  margin: 5px;
+  padding: 5px;
+}
+
+.quantity-container > button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: #5b5ea6;
+}
+.quantity-container > button:hover {
+  background-color: #bc243c;
+  border: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.on-select:active {
+  background-color: #bc243c;
+  border: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.submit-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

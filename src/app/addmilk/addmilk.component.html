@@ -1,0 +1,24 @@
+<div class="container contain-form">
+  <div class="row" *ngFor="let q of quantityArray">
+    <div class="col-sm">
+      <div class="quantity-container">
+        <button
+          type="button"
+          class="btn btn-success on-select"
+          name="quantity"
+          [value]="q"
+          (click)="give($event)"
+        >
+          {{ q }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="submit-button col-sm">
+      <button class="btn btn-primary" type="submit" (click)="onAdd()">
+        Add Milk
+      </button>
+    </div>
+  </div>
+</div>
