@@ -1,22 +1,21 @@
 .contain-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin-left: 80px;
 }
-
-.quantity-container {
+.col,
+.row {
+  padding: 10px;
+  width: 350px;
+  align-items: center;
+}
+.contain-form .row > .col > .on-select {
   cursor: grab;
-  margin: 5px;
-  padding: 5px;
-}
-
-.quantity-container > button {
   width: 60px;
   height: 60px;
   border-radius: 50px;
   background-color: #5b5ea6;
+  padding: 10px;
 }
-.quantity-container > button:hover {
+.contain-form .row > .col > .on-select:hover {
   background-color: #bc243c;
   border: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -31,4 +30,5 @@
 .submit-button {
   margin-top: 10px;
   margin-bottom: 10px;
+  left: 30%;
 }
