@@ -7,7 +7,7 @@ import { MilkService } from '../milk.service';
   styleUrls: ['./addmilk.component.css'],
 })
 export class AddmilkComponent implements OnInit {
-  quantityArray = ['1', '2', '3', '4', '5', '1.5', '2.5', '3.5', '4.5'];
+  quantityArray = ['1', '2', '3', '4', '5', '1.5', '2.5', '3.5', '4.5', '5.5'];
   selectedQty = null;
 
   constructor(private milkService: MilkService) {}

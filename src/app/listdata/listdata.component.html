@@ -3,12 +3,12 @@
     <app-loading-spinner></app-loading-spinner>
   </div>
   <table class="table" *ngIf="!isLoading">
-    <thead class="thead-dark">
+    <thead class="thead-dark" style="position: sticky">
       <tr>
         <th scope="col">S.No.</th>
-        <th scope="col">Quantity</th>
+        <th scope="col">Qty</th>
         <th scope="col">Date</th>
-        <th scope="col">Net Amount</th>
+        <th scope="col">Price</th>
       </tr>
     </thead>
     <tbody *ngFor="let row of dataTable; let i = index">
@@ -16,7 +16,7 @@
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ row.quantity }}</td>
         <td>{{ row.date | date: "dd-MMM-yyyy" }}</td>
-        <td>{{ +row.quantity * 70 }}</td>
+        <td><b>Rs.</b> {{ +row.quantity * 70 }}</td>
       </tr>
     </tbody>
   </table>

@@ -1,5 +1,10 @@
 <div class="container contain-form">
   <div class="row">
+    <div class="col">
+      <div class="container-header">Daily Milk Counter</div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col" *ngFor="let q of quantityArray">
       <button
         type="button"
@@ -14,9 +19,7 @@
   </div>
   <div class="row">
     <div class="submit-button col">
-      <button class="btn btn-primary" type="submit" (click)="onAdd()">
-        Add Milk
-      </button>
+      <button class="btn btn-primary" (click)="onAdd()">Add Milk</button>
     </div>
   </div>
 </div>

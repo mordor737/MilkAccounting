@@ -20,7 +20,7 @@ export class ShowreportComponent implements OnInit {
   }
   processData(data: any[]): void {
     for (let row of data) {
-      this.totalQuantity += row.quantity;
+      this.totalQuantity += +row.quantity;
       this.dayCount++;
     }
     console.log(

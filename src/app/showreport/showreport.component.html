@@ -1,10 +1,13 @@
 <div class="container">
+  <div class="row header"><div class="col">Monthly Report</div></div>
   <div class="row">
-    <div class="col-sm">
-      <p>
-        <b>{{ totalQuantity }}</b> litres of Milk Consumed in
-        <b>{{ dayCount }}</b> Days.
-      </p>
-    </div>
+    <div class="col">Consumed</div>
+    <div class="col">Total Days</div>
+    <div class="col">Total Bill</div>
+  </div>
+  <div class="row">
+    <div class="col">{{ totalQuantity }} Litre</div>
+    <div class="col">{{ dayCount }} Days</div>
+    <div class="col"><b>Rs.</b> {{ totalQuantity * 55 }}</div>
   </div>
 </div>

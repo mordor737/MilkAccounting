@@ -1,20 +1,32 @@
 .contain-form {
-  margin-left: 80px;
+  height: 300px;
 }
+
+.container-header {
+  padding: 0.6em;
+  background-color: #dd4124;
+  font-weight: bolder;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
 .col,
 .row {
-  padding: 10px;
-  width: 350px;
+  width: auto;
   align-items: center;
+  padding: 0px;
 }
-.contain-form .row > .col > .on-select {
+
+.on-select {
   cursor: grab;
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
   background-color: #5b5ea6;
-  padding: 10px;
 }
+
 .contain-form .row > .col > .on-select:hover {
   background-color: #bc243c;
   border: 0px;
