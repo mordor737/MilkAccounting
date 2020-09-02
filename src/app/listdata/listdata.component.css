@@ -1,6 +1,22 @@
+.container {
+  overflow-y: auto;
+  height: 350px;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+.loading-spinner {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
 table > th,
 td {
   text-align: center;
+  table-layout: fixed;
+  width: 200px;
+  padding: 0px;
 }
 p {
   text-align: center;
