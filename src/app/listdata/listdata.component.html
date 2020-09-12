@@ -16,7 +16,7 @@
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ row.quantity }}</td>
         <td>{{ row.date | date: "dd-MMM-yyyy" }}</td>
-        <td><b>Rs.</b> {{ +row.quantity * 70 }}</td>
+        <td><b>Rs.</b> {{ +row.cost }}</td>
       </tr>
     </tbody>
   </table>

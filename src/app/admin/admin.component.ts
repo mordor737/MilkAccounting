@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { MilkService } from '../milk.service';
 @Component({
@@ -8,9 +8,9 @@ import { MilkService } from '../milk.service';
 })
 export class AdminComponent implements OnInit {
   listOfQ = ['1', '2', '3', '4', '5', '1.5', '2.5', '3.5', '4.5'];
-  date: { year: number; month: number };
   model: NgbDateStruct;
-  selectedQty: number;
+  date: { month: string; year: string };
+  selectedQty: number = 1;
   dateString: string;
 
   constructor(
@@ -24,17 +24,28 @@ export class AdminComponent implements OnInit {
     this.selectedQty = qty;
   }
 
+  toStringDate(nModel: NgbDateStruct): string {
+    return nModel.month + '-' + nModel.day + '-' + nModel.year;
+  }
+
   selectToday() {
     this.model = this.calender.getToday();
-    this.dateString =
-      this.model.day + '-' + this.model.month + '-' + this.model.year;
   }
 
   pushData() {
+    this.dateString = this.toStringDate(this.model);
+    console.log(this.dateString);
     this.milkService
       .storeDataIntoFirebase(this.selectedQty, this.dateString)
       .subscribe((data) => {
         console.log(data);
       });
+  }
+
+  changePrice(price: HTMLInputElement) {
+    console.log(price.value);
+    this.milkService.changemilkPrice(price.value).subscribe((resp) => {
+      console.log('Price Changed: ' + resp);
+    });
   }
 }
