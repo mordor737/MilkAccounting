@@ -37,14 +37,3 @@ div {
   border-right-color: rgb(218, 214, 214);
   background-color: rgb(218, 214, 214);
 }
-/*@media only screen and (max-width: 60%) {
-  div {
-    background-color: red;
-  }
-}*/
-
-/*.inner-container:last-child div,
-span,
-input {
-  border: 1px solid black;
-}*/
