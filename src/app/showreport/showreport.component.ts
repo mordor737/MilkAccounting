@@ -10,10 +10,13 @@ export class ShowreportComponent implements OnInit {
   totalQuantity: number = 0;
   dayCount: number = 0;
   dataTable = [];
+  milkPrice: number;
 
   constructor(private milkService: MilkService) {}
 
   ngOnInit(): void {
+    this.milkPrice = this.milkService.price;
+
     this.milkService.getAllMilkAccountData().subscribe((resData) => {
       this.processData(resData);
     });
