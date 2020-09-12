@@ -12,6 +12,8 @@ import { ListdataComponent } from './listdata/listdata.component';
 import { ShowreportComponent } from './showreport/showreport.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,15 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     ShowreportComponent,
     AdminComponent,
     LoadingSpinnerComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

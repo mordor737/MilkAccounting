@@ -1,3 +1,44 @@
 <div class="container">
-  <img src="pngwave.png" />
+  <div class="row">
+    <div class="col-sm-3">
+      <label>Quantity:</label>
+    </div>
+    <div class="col-sm-8 form-group quantity-list">
+      <select (change)="takeQ($event.target.value)" class="form-control">
+        <option *ngFor="let q of listOfQ" [value]="q">{{ q }}</option>
+      </select>
+    </div>
+    <div class="col-sm-1 form-group"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Date:</div>
+    <div class="col-sm-3">
+      <ngb-datepicker
+        #dp
+        [(ngModel)]="model"
+        (navigate)="date = $event.next"
+      ></ngb-datepicker>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <button
+        class="btn btn-sm btn-outline-primary mr-2"
+        (click)="selectToday()"
+      >
+        Select Today
+      </button>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <button type="submit" class="btn btn-primary" (click)="pushData()">
+        Add Milk
+      </button>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
 </div>

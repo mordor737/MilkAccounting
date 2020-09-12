@@ -1,23 +1,19 @@
 .container {
   overflow-y: auto;
-  height: 350px;
+  height: 300px;
+  padding: 0px;
 }
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
 }
+
 .loading-spinner {
-  position: absolute;
+  position: relative;
   top: 40%;
   left: 40%;
 }
-table > th,
-td {
-  text-align: center;
-  table-layout: fixed;
-  width: 200px;
-  padding: 0px;
-}
+
 p {
   text-align: center;
   color: red;

@@ -11,10 +11,10 @@ export class MilkService {
 
   constructor(private http: HttpClient) {}
 
-  storeDataIntoFirebase(qty: number) {
+  storeDataIntoFirebase(qty: number, date?: string) {
     return this.http.post(this.api, {
       quantity: qty,
-      date: new Date(),
+      date: date == null ? new Date() : date,
     });
   }
 

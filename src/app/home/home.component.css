@@ -1,11 +1,18 @@
-body {
-  margin: 0px;
-  padding: 0px;
-}
 .flex-container {
-  margin: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 80px;
 }
-.flex-container > div > div:first-child {
+.header-top {
+  position: sticky;
+  height: 20px;
+  width: 50%;
+  margin: 0;
+}
+
+.flex-container div:first-child {
   height: auto;
   width: 300px;
   margin: 20px;
@@ -13,14 +20,15 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.flex-container > div > div:nth-child(2) {
+.flex-container div:nth-child(2) {
   height: auto;
-  width: auto;
+  width: 400px;
   margin: 20px;
+  padding: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.flex-container > div > div:nth-child(3) {
+.flex-container div:nth-child(3) {
   height: 200px;
   width: auto;
   margin: 20px;
