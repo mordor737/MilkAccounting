@@ -5,13 +5,14 @@
 }
 
 .contain {
-  width: 50vh;
+  position: absolute;
+  width: 30%;
+  left: 30vw;
+  top: 15vw;
   background-color: #deeaee;
   border-radius: 5px;
   padding: 5px 20px 5px 5px;
-  position: relative;
-  top: 30vh;
-  left: 35vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation: bounceIn 2s;
 }
 
@@ -21,7 +22,7 @@
     opacity: 0;
   }
   60% {
-    transform: scale(1.5);
+    transform: scale(1);
     opacity: 1;
   }
   100% {
@@ -43,4 +44,12 @@
 }
 .head .col {
   background-color: #474242;
+}
+
+@media only screen and (max-width: 500px) {
+  .contain {
+    width: 300px;
+    left: 90px;
+    top: 100px;
+  }
 }
