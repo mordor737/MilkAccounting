@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('login') loginForm: NgForm;
   user = { email: '', password: '', returnSecureToken: true };
   errorMsg: string;
+  email: string = 'common@milk.com';
   constructor(private uerService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
     this.uerService.authenticateUser(this.user).subscribe(
       (res: Response) => {
-        console.log('Response: ' + res);
+        this.router.navigate(['']);
       },
       (error) => {
         console.table(error.error.error.message);
