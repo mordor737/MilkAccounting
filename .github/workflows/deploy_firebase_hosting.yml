@@ -10,10 +10,20 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
- 
+  build: 
+     name: install python
+     runs-on: ubuntu-latest
+     steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-python@v2
+          with:
+            python-version: '3.x' 
+            architecture: 'x64'
+    
   deploy:
     name: Deploy to firebase
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
