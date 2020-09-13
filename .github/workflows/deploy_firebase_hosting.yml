@@ -10,31 +10,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-lateste
-    steps:
-      - name: CHeckout Repo
-        uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@master
-        with:
-          node-version: '12.x'
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build --prod
-      - name: Archive Production Artifact
-        uses: actions/upload-atrifact@master
-        with:
-          name: dist/MilkManagement
-          path: ./dist/MilkManagement
-
+ 
   deploy:
     name: Deploy to firebase
     runs-on: ubuntu-latest
-    
-    needs: [build]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
@@ -48,7 +27,7 @@ jobs:
         run: npm run build --prod
         
       - name: GitHub Action for Firebase
-      - uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@master
         with: 
           args: deploy --only hosting
         env: 
