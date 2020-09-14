@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { EditComponent } from './editdata/edit.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
     AdminComponent,
     LoadingSpinnerComponent,
     LoginComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
