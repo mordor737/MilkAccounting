@@ -15,7 +15,7 @@ button,
 svg {
   padding: 0px;
   margin: 0px;
-  transition: height 0.2s;
+  transition: height 0.1s;
 }
 
 button svg:hover {
