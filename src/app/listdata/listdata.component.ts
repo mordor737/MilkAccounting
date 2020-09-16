@@ -19,6 +19,7 @@ export class ListdataComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.loadTable();
+    this.sortData();
   }
 
   loadTable() {
@@ -34,5 +35,15 @@ export class ListdataComponent implements OnInit, DoCheck {
         this.isLoading = false;
       }
     );
+  }
+  sortData() {
+    this.dataTable.sort(this.compareTo);
+    console.log(this.dataTable);
+  }
+
+  compareTo(a, b): number {
+    if (a.date < b.date) return 1;
+    else if (a.date > b.date) return -1;
+    else return 0;
   }
 }
