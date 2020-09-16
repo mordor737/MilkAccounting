@@ -15,7 +15,7 @@
       <tr *ngIf="isAvailable">
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ row.quantity }}</td>
-        <td>{{ row.date | date: "dd-MMM-yyyy" }}</td>
+        <td>{{ row.date | date: "mediumDate" }}</td>
         <td><b>Rs.</b> {{ +row.cost }}</td>
       </tr>
     </tbody>

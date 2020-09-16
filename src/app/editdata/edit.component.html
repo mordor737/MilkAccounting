@@ -14,7 +14,7 @@
     <tbody>
       <tr *ngFor="let row of data; let i = index">
         <td class="hidden">{{ i + 1 }}</td>
-        <td>{{ row.date }}</td>
+        <td>{{ row.date | date: "mediumDate" }}</td>
         <td>{{ row.quantity }}</td>
         <td>{{ row.cost }}</td>
 
