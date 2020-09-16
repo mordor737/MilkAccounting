@@ -17,12 +17,23 @@ export class EditComponent implements OnInit {
     }
 
     this.milkService.getAllMilkAccountData().subscribe((milkResponse) => {
-      console.table(milkResponse);
+      //console.table(milkResponse);
       this.data = milkResponse;
     });
   }
 
-  delete() {}
+  deleteRecord(index: number) {
+    let newData = [];
+    for (let row of this.data) {
+      if (this.data[index] !== row) {
+        newData.push(row);
+      }
+    }
+    this.data = newData;
+    this.milkService.deleteItem(newData).subscribe((res) => {
+      console.log(res);
+    });
+  }
 
   edit() {}
 }

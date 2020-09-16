@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, delay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class MilkService {
@@ -36,6 +36,11 @@ export class MilkService {
     );
   }
 
+  deleteItem(data: Milk[]) {
+    return this.http.put(this.api + 'Daily-Milk_Record.json', data);
+  }
+
+  //Below given code is not functional anymore
   changemilkPrice(newPrice: string) {
     return this.http.post(this.api + 'Milk-Price.json', {
       price: newPrice,
@@ -63,6 +68,8 @@ export interface PostData {
 }
 
 export interface Milk {
-  price: string;
-  id?: string;
+  key: string;
+  cost: string;
+  date: Date;
+  quantity: string;
 }

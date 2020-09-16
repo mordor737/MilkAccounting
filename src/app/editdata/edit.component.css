@@ -1,6 +1,7 @@
 .user-container {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
 th,
@@ -10,7 +11,13 @@ td {
   margin: 0px;
 }
 
-button {
+button,
+svg {
   padding: 0px;
   margin: 0px;
+  transition: height 0.2s;
+}
+
+button svg:hover {
+  height: 50px;
 }
