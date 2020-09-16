@@ -5,7 +5,7 @@
       <tr>
         <th class="hidden">ID</th>
         <th>Date</th>
-        <th>Quant.</th>
+        <th>Quantity</th>
         <th>Cost</th>
         <th></th>
         <th></th>
@@ -19,7 +19,7 @@
         <td>{{ row.cost }}</td>
 
         <td>
-          <button class="btn" (click)="delete(row)">
+          <button type="button" class="btn" (click)="deleteRecord(i)">
             <svg
               id="Layer_1"
               enable-background="new 0 0 512 512"
