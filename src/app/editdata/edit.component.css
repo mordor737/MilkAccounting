@@ -1,9 +1,29 @@
+.alert-danger {
+  position: relative;
+}
+
 .user-container {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
 }
 
+.update-selected-record {
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  padding: 1px 5px 1px 5px;
+}
+
+.col {
+  margin: 10px;
+}
+
+.col > input {
+  width: 100%;
+}
 th,
 td {
   text-align: center;
@@ -11,13 +31,13 @@ td {
   margin: 0px;
 }
 
-button,
+contain-svg,
 svg {
   padding: 0px;
   margin: 0px;
   transition: height 0.1s;
 }
 
-button svg:hover {
-  height: 50px;
+contain-svg svg:hover {
+  height: 40px;
 }

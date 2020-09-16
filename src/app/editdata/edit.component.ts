@@ -9,6 +9,9 @@ import { MilkService } from '../milk.service';
 })
 export class EditComponent implements OnInit {
   data;
+  deleteStatus;
+  selectedrecord;
+  collect = { date: '', quantity: '', cost: '' };
   constructor(private router: Router, private milkService: MilkService) {}
 
   ngOnInit(): void {
@@ -20,6 +23,7 @@ export class EditComponent implements OnInit {
       //console.table(milkResponse);
       this.data = milkResponse;
     });
+    this.sortData();
   }
 
   deleteRecord(index: number) {
@@ -30,10 +34,39 @@ export class EditComponent implements OnInit {
       }
     }
     this.data = newData;
-    this.milkService.deleteItem(newData).subscribe((res) => {
-      console.log(res);
-    });
+    this.milkService.deleteItem(newData).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        this.deleteStatus = 'Unknown Error occured';
+      },
+      () => {
+        this.deleteStatus = 'Record Deleted';
+      }
+    );
+    this.sortData();
+    setTimeout(() => {
+      this.deleteStatus = '';
+    }, 3000);
   }
 
-  edit() {}
+  edit(index: string) {
+    this.selectedrecord = this.data[index];
+    this.collect.quantity = this.selectedrecord.quantity;
+    this.collect.cost = this.selectedrecord.cost;
+    this.collect.date = this.selectedrecord.date;
+    this.sortData();
+  }
+
+  sortData() {
+    this.data.sort(this.compareTo);
+    console.log(this.data);
+  }
+
+  compareTo(a, b): number {
+    if (a.date < b.date) return 1;
+    else if (a.date > b.date) return -1;
+    else return 0;
+  }
 }
