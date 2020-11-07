@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MilkService } from '../milk.service';
-
+import { MilkService, Milk } from '../milk.service';
+import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  data;
+  data: Milk[];
   deleteStatus;
-  selectedrecord;
-  collect = { date: '', quantity: '', cost: '' };
-  constructor(private router: Router, private milkService: MilkService) {}
+  selectedrecord: Milk;
+  collect: Milk = { key: '', cost: 0, date: '', quantity: 0 };
+  modelDate: NgbDateStruct;
+  today = this.calendar.getToday();
+
+  constructor(
+    private router: Router,
+    private milkService: MilkService,
+    private calendar: NgbCalendar
+  ) {}
 
   ngOnInit(): void {
     if (!localStorage.getItem('cUser')) {
@@ -22,30 +29,22 @@ export class EditComponent implements OnInit {
     this.milkService.getAllMilkAccountData().subscribe((milkResponse) => {
       //console.table(milkResponse);
       this.data = milkResponse;
+      this.sortData();
     });
-    this.sortData();
   }
 
-  deleteRecord(index: number) {
-    let newData = [];
-    for (let row of this.data) {
-      if (this.data[index] !== row) {
-        newData.push(row);
-      }
-    }
-    this.data = newData;
-    this.milkService.deleteItem(newData).subscribe(
-      (res) => {
+  deleteRecord(key: string) {
+    this.milkService
+      .deleteItem(key)
+      .then((res) => {
         console.log(res);
-      },
-      (error) => {
-        this.deleteStatus = 'Unknown Error occured';
-      },
-      () => {
         this.deleteStatus = 'Record Deleted';
-      }
-    );
-    this.sortData();
+      })
+      .catch((error) => {
+        this.deleteStatus = 'Unknown Error occured';
+      });
+
+    //this.sortData();
     setTimeout(() => {
       this.deleteStatus = '';
     }, 3000);
@@ -53,15 +52,25 @@ export class EditComponent implements OnInit {
 
   edit(index: string) {
     this.selectedrecord = this.data[index];
+    this.collect.key = this.selectedrecord.key;
     this.collect.quantity = this.selectedrecord.quantity;
     this.collect.cost = this.selectedrecord.cost;
     this.collect.date = this.selectedrecord.date;
     this.sortData();
   }
 
+  updateData() {
+    this.collect.date = this.toStringDate(this.modelDate);
+    this.milkService.updateSelectedMilkData(this.collect);
+  }
+
+  toStringDate(nModel: NgbDateStruct): string {
+    return nModel.month + '-' + nModel.day + '-' + nModel.year;
+  }
+
   sortData() {
-    this.data.sort(this.compareTo);
     console.log(this.data);
+    this.data.sort(this.compareTo);
   }
 
   compareTo(a, b): number {

@@ -1,5 +1,6 @@
 .alert-danger {
   position: relative;
+  transition: width 2s;
 }
 
 .user-container {
@@ -8,21 +9,14 @@
   margin-top: 20px;
 }
 
-.update-selected-record {
-  width: 60%;
-  margin-bottom: 10px;
+.cost-input,
+.quantity-input {
+  width: 80px;
+  padding: 0px;
+  margin: 0px;
 }
-
-.btn-primary {
-  padding: 1px 5px 1px 5px;
-}
-
 .col {
-  margin: 10px;
-}
-
-.col > input {
-  width: 100%;
+  border: 1px solid black;
 }
 th,
 td {
