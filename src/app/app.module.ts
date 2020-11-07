@@ -15,7 +15,9 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { EditComponent } from './editdata/edit.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { firebaseConfig } from '../environments/firebase.config';
+import { AngularFireDatabaseModule } from '@angular//fire/database';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,8 @@ import { EditComponent } from './editdata/edit.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    AngularFireModule.initializeApp(firebaseConfig, 'milk-accounting'),
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

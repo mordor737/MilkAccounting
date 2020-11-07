@@ -1,25 +1,61 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { exhaustMap, map, take } from 'rxjs/operators';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({ providedIn: 'root' })
 export class MilkService {
   private readonly api = 'https://milkaccounting.firebaseio.com/';
-  private readonly MILK_PRICE = 55;
+  priceSubject = new Subject<any>();
 
-  constructor(private http: HttpClient) {}
+  private dbPath = '/test';
+  milkRef: AngularFireList<Milk> = null;
 
-  get price(): number {
-    return this.MILK_PRICE;
+  constructor(private http: HttpClient, private fireDb: AngularFireDatabase) {
+    this.milkRef = fireDb.list(this.dbPath);
+  }
+
+  create(test: any): any {
+    return this.milkRef.push(test);
+  }
+  fetchMimlkPrice() {
+    return this.http.get(this.api + 'Milk-Price.json').pipe(
+      map((response: { [key: string]: { price: number } }) => {
+        let gotPrice: number;
+        console.log(response);
+        for (const key in response) {
+          gotPrice = { ...response[key] }.price;
+        }
+        return gotPrice;
+      })
+    );
   }
 
   storeDataIntoFirebase(qty: number, date?: string) {
-    console.log('Print Date: ' + date);
-    return this.http.post(this.api + 'Daily-Milk_Record.json', {
-      quantity: qty,
-      date: date == undefined ? new Date() : date,
-      cost: this.MILK_PRICE * qty,
-    });
+    return this.http.get(this.api + 'Milk-Price.json').pipe(
+      map((response: { [key: string]: { price: number } }) => {
+        let gotPrice: number;
+        console.log(response);
+        for (const key in response) {
+          gotPrice = { ...response[key] }.price;
+        }
+        return gotPrice;
+      }),
+      take(1),
+      exhaustMap((price) => {
+        this.create({
+          cost: +price,
+          date: date == undefined ? new Date().toString() : date,
+          quantity: qty,
+        });
+        return this.http.post(this.api + 'Daily-Milk_Record.json', {
+          quantity: qty,
+          date: date == undefined ? new Date() : date,
+          cost: price * qty,
+        });
+      })
+    );
   }
 
   getAllMilkAccountData() {
@@ -46,19 +82,6 @@ export class MilkService {
       price: newPrice,
     });
   }
-
-  /*getMilkPrice() {
-    return this.http.get(this.api + 'Milk-Price.json').pipe(
-      map((response: { [key: string]: Milk }) => {
-        let price: string;
-        for (const key in response) {
-          console.log('KEY: ' + { ...response[key] }.price);
-          price = { ...response[key] }.price;
-        }
-        return price;
-      }, delay(2000))
-    );
-  }*/
 }
 
 export interface PostData {
