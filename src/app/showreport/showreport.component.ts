@@ -15,7 +15,9 @@ export class ShowreportComponent implements OnInit {
   constructor(private milkService: MilkService) {}
 
   ngOnInit(): void {
-    this.milkPrice = this.milkService.price;
+    this.milkService.fetchMimlkPrice().subscribe((price) => {
+      this.milkPrice = +price;
+    });
 
     this.milkService.getAllMilkAccountData().subscribe((resData) => {
       this.processData(resData);
