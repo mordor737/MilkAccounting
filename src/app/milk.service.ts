@@ -73,8 +73,11 @@ export class MilkService {
     );
   }
 
-  deleteItem(data: Milk[]) {
-    return this.http.put(this.api + 'Daily-Milk_Record.json', data);
+  updateSelectedMilkData(data: Milk): Promise<void> {
+    return this.milkRef.update(data.key, data);
+  }
+  deleteItem(key: string): Promise<void> {
+    return this.milkRef.remove(key);
   }
 
   //Below given code is not functional anymore
