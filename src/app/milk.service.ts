@@ -16,9 +16,6 @@ export class MilkService {
     this.milkRef = fireDb.list(this.dbPath);
   }
 
-  create(test: any): any {
-    return this.milkRef.push(test);
-  }
   fetchMimlkPrice() {
     return this.http.get(this.api + 'Milk-Price.json').pipe(
       map((response: { [key: string]: { price: number } }) => {
@@ -44,22 +41,17 @@ export class MilkService {
       }),
       take(1),
       exhaustMap((price) => {
-        this.create({
-          cost: +price,
+        return this.milkRef.push({
+          cost: +price * qty,
           date: date == undefined ? new Date().toString() : date,
           quantity: qty,
-        });
-        return this.http.post(this.api + 'Daily-Milk_Record.json', {
-          quantity: qty,
-          date: date == undefined ? new Date() : date,
-          cost: price * qty,
         });
       })
     );
   }
 
   getAllMilkAccountData() {
-    return this.http.get(this.api + 'Daily-Milk_Record.json').pipe(
+    /*return this.http.get(this.api + 'Daily-Milk_Record.json').pipe(
       map((response: { [key: string]: PostData }) => {
         const postArray = [];
         for (const key in response) {
@@ -68,6 +60,15 @@ export class MilkService {
           }
         }
         return postArray;
+      })
+    );*/
+    return this.milkRef.snapshotChanges().pipe(
+      map((response) => {
+        console.log('------Fetching Data------');
+        return response.map((r) => ({
+          key: r.payload.key,
+          ...r.payload.val(),
+        }));
       })
     );
   }
@@ -91,8 +92,8 @@ export interface PostData {
 }
 
 export interface Milk {
-  key: string;
-  cost: string;
-  date: Date;
-  quantity: string;
+  key?: string;
+  cost: number;
+  date: string;
+  quantity: number;
 }
