@@ -12,13 +12,19 @@ export class AdminComponent implements OnInit {
   date: { month: string; year: string };
   selectedQty: number = 1;
   dateString: string;
+  totalBill: number = 0;
 
   constructor(
     private calender: NgbCalendar,
     private milkService: MilkService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.milkService.getTotalBill().subscribe((res) => {
+      this.totalBill = +res;
+      console.log('Total Bill-->: ', +res);
+    });
+  }
 
   takeQ(qty: number) {
     this.selectedQty = qty;

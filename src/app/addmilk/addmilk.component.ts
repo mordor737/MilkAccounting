@@ -23,7 +23,7 @@ export class AddmilkComponent implements OnInit {
       this.milkService
         .storeDataIntoFirebase(+this.selectedQty)
         .subscribe((responseData) => {
-          console.log(responseData);
+          console.log('Daily Milk Recoreded Added');
         });
       this.selectedQty = null;
     } else {

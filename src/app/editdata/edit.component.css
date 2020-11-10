@@ -1,5 +1,6 @@
 .alert-danger {
-  position: relative;
+  position: fixed;
+  left: 85vw;
   transition: width 2s;
 }
 
@@ -9,15 +10,6 @@
   margin-top: 20px;
 }
 
-.cost-input,
-.quantity-input {
-  width: 80px;
-  padding: 0px;
-  margin: 0px;
-}
-.col {
-  border: 1px solid black;
-}
 th,
 td {
   text-align: center;

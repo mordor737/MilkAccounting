@@ -66,6 +66,24 @@
           Change
         </button>
       </div>
+      <div class="row">
+        <div class="col-sm-2">Total:</div>
+        <div class="col-sm-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="totalBill"
+            disabled
+          />
+        </div>
+        <div class="col-1"><h1>-</h1></div>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="Amount" />
+        </div>
+        <div class="col-sm-2">
+          <button type="text" class="btn-primary pay">Pay</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
