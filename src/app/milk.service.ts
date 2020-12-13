@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { exhaustMap, map, take } from 'rxjs/operators';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({ providedIn: 'root' })
 export class MilkService {
   private readonly api = 'https://milkaccounting.firebaseio.com/';
-  totalPriceSubject = new Subject<number>();
+  totalPriceSubject = new BehaviorSubject<number>(0);
 
   private dbMilkListPath = '/Milk-Record';
   private dbMilkBillPath = '/total-bill';

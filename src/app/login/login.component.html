@@ -1,6 +1,11 @@
-<div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+<!--<div class="alert alert-danger" role="alert" *ngIf="errorMsg">
   {{ errorMsg }}
-</div>
+</div>-->
+<app-alert
+  [message]="errorMsg"
+  *ngIf="errorMsg"
+  (close)="onHandleError()"
+></app-alert>
 <div class="contain">
   <form #login="ngForm">
     <div class="row head"><div class="col">Login</div></div>

@@ -19,12 +19,7 @@ export class AdminComponent implements OnInit {
     private milkService: MilkService
   ) {}
 
-  ngOnInit(): void {
-    this.milkService.getTotalBill().subscribe((res) => {
-      this.totalBill = +res;
-      console.log('Total Bill-->: ', +res);
-    });
-  }
+  ngOnInit(): void {}
 
   takeQ(qty: number) {
     this.selectedQty = qty;
@@ -53,5 +48,12 @@ export class AdminComponent implements OnInit {
     this.milkService.changemilkPrice(price.value).subscribe((resp) => {
       console.log('Price Changed: ' + resp);
     });
+  }
+
+  getTotalBill() {
+    this.milkService.getTotalBill().subscribe((res) => {
+      this.totalBill = +res;
+    });
+    return this.totalBill;
   }
 }
