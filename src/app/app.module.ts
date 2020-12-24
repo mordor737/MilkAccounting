@@ -17,7 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { EditComponent } from './editdata/edit.component';
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from '../environments/firebase.config';
-import { AngularFireDatabaseModule } from '@angular//fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AlertComponent } from './shared/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { AngularFireDatabaseModule } from '@angular//fire/database';
     LoadingSpinnerComponent,
     LoginComponent,
     EditComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

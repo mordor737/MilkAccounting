@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   date: { month: string; year: string };
   selectedQty: number = 1;
   dateString: string;
+  totalBill: number = 0;
 
   constructor(
     private calender: NgbCalendar,
@@ -47,5 +48,12 @@ export class AdminComponent implements OnInit {
     this.milkService.changemilkPrice(price.value).subscribe((resp) => {
       console.log('Price Changed: ' + resp);
     });
+  }
+
+  getTotalBill() {
+    this.milkService.getTotalBill().subscribe((res) => {
+      this.totalBill = +res;
+    });
+    return this.totalBill;
   }
 }

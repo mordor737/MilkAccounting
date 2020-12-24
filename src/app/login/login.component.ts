@@ -20,9 +20,10 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.user.email = this.loginForm.value.email;
     this.user.password = this.loginForm.value.password;
-    console.log(this.user);
+
     this.uerService.authenticateUser(this.user).subscribe(
       (res: Response) => {
+        this.errorMsg = null;
         this.router.navigate(['']);
       },
       (error) => {
@@ -53,5 +54,9 @@ export class LoginComponent implements OnInit {
     setTimeout(() => {
       this.errorMsg = null;
     }, 5000);
+  }
+
+  onHandleError() {
+    this.errorMsg = null;
   }
 }

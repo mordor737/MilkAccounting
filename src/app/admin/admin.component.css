@@ -65,3 +65,17 @@
 .inner-container:first-child > .row:nth-child(2) {
   margin-top: 10px;
 }
+
+.pay {
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+div > div:nth-child(2) > div:nth-child(2) > div.row {
+  width: 98%;
+  margin-left: 0px;
+  margin-top: 10px;
+  align-items: center;
+}
+div > div:nth-child(2) > div:nth-child(2) > div.row > div {
+}
