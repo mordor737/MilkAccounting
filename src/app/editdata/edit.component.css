@@ -1,7 +1,7 @@
 .alert-danger {
   position: fixed;
-  left: 85vw;
-  transition: width 2s;
+  top:0;
+  left:50vw;
 }
 
 .user-container {

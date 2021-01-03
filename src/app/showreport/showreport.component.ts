@@ -7,8 +7,8 @@ import { MilkService, PostData } from '../milk.service';
   styleUrls: ['./showreport.component.css'],
 })
 export class ShowreportComponent implements OnInit {
-  totalQuantity: number = 0;
-  dayCount: number = 0;
+  totalQuantity: number;
+  dayCount: number;
   dataTable = [];
   milkPrice: number;
 
@@ -17,9 +17,13 @@ export class ShowreportComponent implements OnInit {
   ngOnInit(): void {
     this.milkService.fetchMimlkPrice().subscribe((price) => {
       this.milkPrice = +price;
+      console.log('Milk Price: ' + this.milkPrice);
     });
 
     this.milkService.getAllMilkAccountData().subscribe((resData) => {
+      console.table(resData);
+      this.dayCount = 0;
+      this.totalQuantity = 0;
       this.processData(resData);
     });
   }

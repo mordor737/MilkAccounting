@@ -22,6 +22,11 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.modelDate = {
+      day: new Date().getUTCDay(),
+      month: new Date().getUTCMonth(),
+      year: new Date().getUTCFullYear(),
+    };
     if (!localStorage.getItem('cUser')) {
       this.router.navigate(['login']);
     }
@@ -46,8 +51,8 @@ export class EditComponent implements OnInit {
 
     //this.sortData();
     setTimeout(() => {
-      this.deleteStatus = '';
-    }, 3000);
+      this.deleteStatus = null;
+    }, 2000);
   }
 
   edit(index: string) {

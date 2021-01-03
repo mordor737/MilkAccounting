@@ -39,6 +39,7 @@ export class MilkService {
         for (const key in response) {
           gotPrice = { ...response[key] }.price;
         }
+        console.log('Market Price: ' + gotPrice);
         return gotPrice;
       }),
       take(1),
